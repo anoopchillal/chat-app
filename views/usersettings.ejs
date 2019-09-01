@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Chat app</title>
+   
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+  </head>
+  <body>
+    <input id ="UserName" placeholder="edit UserName..."/>
+
+    <input id ="fullname" placeholder="enter fullname..."/>
+
+    <input id ="emailid" placeholder="enter emailid..."/>
+
+    <input id ="password" placeholder="enter password..."/>
+
+    <input id ="mobile" placeholder="enter mobile..."/>
+
+    <button>Save</button>
+    <script>
+    
+    $("button").click(function(e){
+        var UserName=$('#UserName').val();
+        var fullname=$('#fullname').val();
+        var emailid=$('#emailid').val();
+        var password=$('#password').val();
+        var mobile=$('#mobile').val();
+
+        console.log(UserName,fullname,emailid,password,mobile);
+
+        var obj = 
+        {
+            UserName: UserName,
+            fullname: fullname,
+            emailid: emailid,
+            password:password,
+            mobile: mobile,
+        }
+        $.ajax({
+            url:"/save/UserName",
+            type:'post',
+            contentType:'application/json',
+            data:JSON.stringify(obj)
+        })
+    });
+    </script>
+    
+  </body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Chat app</title>
+   
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+  </head>
+  <body>
+    <input id ="UserName" placeholder="UserName..."/>
+
+    <input id ="password" placeholder="enter password..."/>
+
+    <button>login</button>
+    <script>
+    
+    $("button").click(function(e){
+        var UserName=$('#UserName').val();
+        var password=$('#password').val();
+
+        console.log(UserName,password);
+
+        var obj = 
+        {
+            UserName: UserName,
+            password:password,
+        }
+        $.ajax({
+            url:'/login/user',
+            type:'post',
+            contentType:'application/json',
+            data:JSON.stringify(obj),
+            success: function(response){
+                window.location.assign(response)
+            }
+        })
+    });
+    </script>
+    
+  </body>
+</html>
